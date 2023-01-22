@@ -11,7 +11,7 @@ export const printScreenshot = async () => {
 
   screen.highlight(new Region(left, top, width, height));
 
-  const screenshot = await screen.grabRegion(new Region(left, top, width, height));
+  const screenshot = await (await screen.grabRegion(new Region(left, top, width, height))).toRGB();
 
   const image = new Jimp({
     data: screenshot.data,
